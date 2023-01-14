@@ -16,6 +16,11 @@ body{
 input{
     margin-top: 10px;
     width: auto;
+    background-color: black;
+    color: white;
+    border-color: white;
+    border-style: solid;
+    font-size: 16px;
 }
 .btn{
     background-color: white;
@@ -23,9 +28,17 @@ input{
 
 }
 table{
-    width: 50%;
+    min-width: 50%;
     border: 2px;
     border-style: solid;
     border-color: white;
     text-align: left;
+    border-collapse: separate;
+    border-spacing: 2em 1em;
+}
+td{
+    padding: 10px;
+}
+th{
+    padding: 10px;
 }
