@@ -17,6 +17,7 @@ const arr=[];
     if(name1.value=="" || profession.value=="" || age.value=="" ){
         message.style.color="red";
         message.innerHTML="Error : Please make sure all the fields are filled before adding in an employee!"
+        renderTable();
         // e.preventDefault();
     }else{
         arr.push({
@@ -27,11 +28,38 @@ const arr=[];
         });
         message.style.color= "green";
         message.innerHTML="Success : Employee Added!"
+        renderTable();
         // e.preventDefault();
-       const lis= document.createElement("li");
-       lis.innerHTML=name1.value+profession.value+age.value;
-       document.getElementById("list").appendChild(lis);
+       
+         }
     }
-}
+
+    function renderTable(){
+        let tab = document.getElementById('tab');
+        let i =0;
+        arr.forEach(element => {
+            i++;
+            var row = tab.insertRow();
+            let id = row.insertCell();
+            id.innerHTML = i+".";
+            let name = row.insertCell();
+            name.innerHTML=element.Name;
+            let profession = row.insertCell();
+            profession.innerHTML = element.Profession;
+            let age = row.insertCell();
+            age.innerHTML = element.Age;
+            let deletebtn = document.createElement("button");
+            deletebtn.setAttribute('id', 'deletebtn'+i);
+            deletebtn.innerText = "Delete";
+            document.getElementById("deletebtn"+i).appendChild(deletebtn);
+            deletebtn.addEventListener('click',deleteElement(i-1));
+        });
+    }
+
+    function deleteElement(i){
+        arr.splice(i,1);
+        renderTable();
+    }
+
 
 
