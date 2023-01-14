@@ -23,5 +23,9 @@ input{
 
 }
 table{
-    
+    width: 50%;
+    border: 2px;
+    border-style: solid;
+    border-color: white;
+    text-align: left;
 }

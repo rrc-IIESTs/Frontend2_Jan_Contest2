@@ -1,11 +1,7 @@
 const arr=[];
+let i=0;
 
 
-// let details = {
-    //     Name: name1.value,
-    //     Profession: profession.value,
-    //     Age: age.value
-    // }
     
     
     function addDetailsToArray(){
@@ -13,10 +9,12 @@ const arr=[];
         let profession = document.getElementById('profession')
         let age = document.getElementById("age")
         let message = document.getElementById("message")
+        clearTable();
         
     if(name1.value=="" || profession.value=="" || age.value=="" ){
         message.style.color="red";
         message.innerHTML="Error : Please make sure all the fields are filled before adding in an employee!"
+        i=0;
         renderTable();
         // e.preventDefault();
     }else{
@@ -28,17 +26,24 @@ const arr=[];
         });
         message.style.color= "green";
         message.innerHTML="Success : Employee Added!"
+        i=0;
         renderTable();
         // e.preventDefault();
        
          }
     }
+    function clearTable(){
+        let tab = document.getElementById('tab');
+        arr.forEach(element => {
+            tab.deleteRow(1);
+        });
+    }
 
     function renderTable(){
         let tab = document.getElementById('tab');
-        let i =0;
+        
         arr.forEach(element => {
-            i++;
+            i=i+1;
             var row = tab.insertRow();
             let id = row.insertCell();
             id.innerHTML = i+".";
@@ -49,15 +54,17 @@ const arr=[];
             let age = row.insertCell();
             age.innerHTML = element.Age;
             let deletebtn = document.createElement("button");
-            deletebtn.setAttribute('id', 'deletebtn'+i);
+            deletebtn.setAttribute('id', i);
             deletebtn.innerText = "Delete";
-            document.getElementById("deletebtn"+i).appendChild(deletebtn);
-            deletebtn.addEventListener('click',deleteElement(i-1));
+            row.appendChild(deletebtn);
+            deletebtn.addEventListener('click',function(){deleteElement(i-1)});
         });
     }
 
-    function deleteElement(i){
-        arr.splice(i,1);
+    function deleteElement(x){
+        clearTable();
+        arr.splice(x,1);
+        i=0;
         renderTable();
     }
 
