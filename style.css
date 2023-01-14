@@ -1,0 +1,27 @@
+.items{
+    display: flex;
+    flex-direction: column;
+}
+.form{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    
+}
+body{
+    margin: 2%;
+    background-color: black;
+    color: white;
+}
+input{
+    margin-top: 10px;
+    width: auto;
+}
+.btn{
+    background-color: white;
+    color: black;
+
+}
+table{
+    
+}
